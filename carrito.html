@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauti Rose - Carrito</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#fff5f7;
+        }
+
+        header{
+            width:100%;
+            background:#ffb6c1;
+            padding:20px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo{
+            font-size:35px;
+            color:white;
+            font-weight:bold;
+        }
+
+        .menu{
+            display:flex;
+            gap:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:white;
+            background:#d63384;
+            padding:12px 25px;
+            border-radius:25px;
+            transition:0.3s;
+        }
+
+        .menu a:hover{
+            background:#b0256b;
+        }
+
+        .titulo{
+            text-align:center;
+            margin:40px 0;
+        }
+
+        .titulo h1{
+            font-size:50px;
+            color:#d63384;
+        }
+
+        .contenedor-carrito{
+            width:90%;
+            margin:auto;
+            display:flex;
+            flex-direction:column;
+            gap:25px;
+            padding-bottom:30px;
+        }
+
+        .producto{
+            background:white;
+            border-radius:20px;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            flex-wrap:wrap;
+            gap:20px;
+        }
+
+        .producto-info{
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .producto-info img{
+            width:130px;
+            height:130px;
+            object-fit:cover;
+            border-radius:15px;
+        }
+
+        .producto-texto h2{
+            color:#d63384;
+            margin-bottom:10px;
+        }
+
+        .producto-texto p{
+            color:#666;
+            font-size:20px;
+        }
+
+        .controles{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .controles button{
+            width:40px;
+            height:40px;
+            border:none;
+            border-radius:50%;
+            background:#ff69b4;
+            color:white;
+            font-size:22px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .controles button:hover{
+            background:#d63384;
+        }
+
+        .cantidad{
+            font-size:22px;
+            color:#444;
+            min-width:30px;
+            text-align:center;
+        }
+
+        .eliminar{
+            background:#ff4d6d !important;
+        }
+
+        .eliminar:hover{
+            background:#c9184a !important;
+        }
+
+        .subtotal{
+            color:#ff1493 !important;
+            font-weight:bold;
+            margin-top:10px;
+        }
+
+        .total{
+            width:90%;
+            margin:30px auto;
+            background:white;
+            padding:25px;
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .total h2{
+            color:#d63384;
+            font-size:35px;
+        }
+
+        .total span{
+            color:#ff1493;
+        }
+
+        /* BOTON CONTINUAR */
+
+        .acciones{
+            width:90%;
+            margin:auto;
+            text-align:center;
+            padding-bottom:50px;
+        }
+
+        .btn-continuar{
+            background:#ff1493;
+            color:white;
+            border:none;
+            padding:18px 40px;
+            font-size:22px;
+            border-radius:40px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn-continuar:hover{
+            background:#d63384;
+        }
+
+        /* OPCIONES */
+
+        .opciones-pago{
+            margin-top:25px;
+            display:none;
+            gap:20px;
+            justify-content:center;
+            flex-wrap:wrap;
+        }
+
+        .opciones-pago a{
+            text-decoration:none;
+            background:#ff69b4;
+            color:white;
+            padding:16px 30px;
+            border-radius:30px;
+            font-size:20px;
+            transition:0.3s;
+        }
+
+        .opciones-pago a:hover{
+            background:#d63384;
+        }
+
+        .vacio{
+            text-align:center;
+            color:#666;
+            font-size:25px;
+            margin-top:80px;
+        }
+
+        @media(max-width:800px){
+
+            .producto{
+                flex-direction:column;
+                align-items:flex-start;
+            }
+
+            .producto-info{
+                flex-direction:column;
+                align-items:flex-start;
+            }
+
+            header{
+                flex-direction:column;
+                gap:15px;
+                padding:20px;
+            }
+
+        }
+        /* LOGO */
+
+.logo-contenedor{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo-texto{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+    </style>
+
+</head>
+<body>
+
+    <header>
+
+        <div class="logo-contenedor">
+
+    <img src="imagenes/logo.png" alt="Logo Beauti Rose" class="logo-img">
+
+    <div class="logo-texto">Beauti Rose</div>
+
+</div>
+        <div class="menu">
+            <a href="vista1.html">Inicio</a>
+            <a href="vista2.html">Catálogo</a>
+        </div>
+
+    </header>
+
+    <div class="titulo">
+        <h1>🛒 Carrito de Compras</h1>
+    </div>
+
+    <div class="contenedor-carrito" id="contenedor-carrito"></div>
+
+    <div class="total">
+        <h2>Total: <span id="total">$0 MXN</span></h2>
+    </div>
+
+    <!-- CONTINUAR COMPRA -->
+
+    <div class="acciones">
+
+        <button class="btn-continuar"
+        onclick="mostrarOpciones()">
+
+            Continuar Compra
+
+        </button>
+
+        <div class="opciones-pago" id="opcionesPago">
+
+            <a href="tarjeta.html">
+                💳 Pago con Tarjeta
+            </a>
+
+            <a href="direccion.html">
+                💵 Pago en Efectivo
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        let contenedor = document.getElementById("contenedor-carrito");
+
+        function mostrarCarrito(){
+
+            contenedor.innerHTML = "";
+
+            let total = 0;
+
+            if(carrito.length === 0){
+
+                contenedor.innerHTML = `
+                    <div class="vacio">
+                        Tu carrito está vacío 🛒
+                    </div>
+                `;
+
+                document.getElementById("total").innerHTML = "$0 MXN";
+
+                return;
+
+            }
+
+            carrito.forEach((producto,index)=>{
+
+                let cantidad = producto.cantidad || 1;
+
+                let subtotal = producto.precio * cantidad;
+
+                total += subtotal;
+
+                contenedor.innerHTML += `
+
+                    <div class="producto">
+
+                        <div class="producto-info">
+
+                            <img src="${producto.imagen}">
+
+                            <div class="producto-texto">
+
+                                <h2>${producto.nombre}</h2>
+
+                                <p>$${producto.precio} MXN</p>
+
+                                <p class="subtotal">
+                                    Subtotal: $${subtotal} MXN
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="controles">
+
+                            <button onclick="disminuir(${index})">-</button>
+
+                            <div class="cantidad">
+                                ${cantidad}
+                            </div>
+
+                            <button onclick="aumentar(${index})">+</button>
+
+                            <button class="eliminar"
+                            onclick="eliminarProducto(${index})">
+                                🗑
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+            document.getElementById("total").innerHTML =
+            "$" + total + " MXN";
+
+        }
+
+        function aumentar(index){
+
+            carrito[index].cantidad++;
+
+            guardar();
+
+        }
+
+        function disminuir(index){
+
+            if(carrito[index].cantidad > 1){
+
+                carrito[index].cantidad--;
+
+            }
+
+            guardar();
+
+        }
+
+        function eliminarProducto(index){
+
+            carrito.splice(index,1);
+
+            guardar();
+
+        }
+
+        function guardar(){
+
+            localStorage.setItem(
+                "carrito",
+                JSON.stringify(carrito)
+            );
+
+            mostrarCarrito();
+
+        }
+
+        // MOSTRAR OPCIONES DE PAGO
+
+        function mostrarOpciones(){
+
+            let opciones =
+            document.getElementById("opcionesPago");
+
+            if(opciones.style.display === "flex"){
+
+                opciones.style.display = "none";
+
+            }else{
+
+                opciones.style.display = "flex";
+
+            }
+
+        }
+
+        mostrarCarrito();
+
+    </script>
+
+</body>
+</html>

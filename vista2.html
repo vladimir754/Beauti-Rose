@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauti Rose - Catálogo</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#fff5f7;
+        }
+
+        header{
+            width:100%;
+            background:#ffb6c1;
+            padding:20px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:sticky;
+            top:0;
+            z-index:100;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo{
+            font-size:35px;
+            color:white;
+            font-weight:bold;
+        }
+
+        .menu{
+            display:flex;
+            gap:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:white;
+            background:#d63384;
+            padding:12px 25px;
+            border-radius:25px;
+            transition:0.3s;
+        }
+
+        .menu a:hover{
+            background:#b0256b;
+        }
+
+        .titulo{
+            text-align:center;
+            margin-top:40px;
+        }
+
+        .titulo h1{
+            color:#d63384;
+            font-size:55px;
+        }
+
+        /* BUSCADOR */
+
+        .buscador{
+            display:flex;
+            justify-content:center;
+            margin:35px 0;
+        }
+
+        .buscador input{
+            width:60%;
+            padding:18px;
+            border-radius:40px;
+            border:2px solid #ff69b4;
+            outline:none;
+            font-size:18px;
+            box-shadow:0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor{
+            width:90%;
+            margin:auto;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+            padding-bottom:60px;
+        }
+
+        /* CARD */
+
+        .card{
+            background:white;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            transition:0.4s;
+            cursor:pointer;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+        }
+
+        .card img{
+            width:100%;
+            height:280px;
+            object-fit:cover;
+        }
+
+        .info{
+            padding:20px;
+            text-align:center;
+        }
+
+        .info h2{
+            color:#d63384;
+            margin-bottom:10px;
+        }
+
+        .categoria{
+            color:#ff1493;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .precio{
+            font-size:24px;
+            color:#ff1493;
+            font-weight:bold;
+            margin:15px 0;
+        }
+
+        .extra{
+            max-height:0;
+            overflow:hidden;
+            transition:0.5s;
+        }
+
+        .card.active .extra{
+            max-height:250px;
+            margin-top:15px;
+        }
+
+        .extra p{
+            color:#666;
+            margin-bottom:15px;
+        }
+
+        .boton-carrito{
+            background:#ff69b4;
+            color:white;
+            border:none;
+            padding:12px 25px;
+            border-radius:25px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .boton-carrito:hover{
+            background:#d63384;
+        }
+
+        @media(max-width:700px){
+
+            header{
+                flex-direction:column;
+                gap:15px;
+                padding:20px;
+            }
+
+            .buscador input{
+                width:90%;
+            }
+
+            .titulo h1{
+                font-size:40px;
+            }
+
+        }
+        /* LOGO */
+
+.logo-contenedor{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo-texto{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+    </style>
+
+</head>
+<body>
+
+    <header>
+
+        <div class="logo-contenedor">
+
+    <img src="imagenes/logo.png" alt="Logo Beauti Rose" class="logo-img">
+
+    <div class="logo-texto">Beauti Rose</div>
+
+</div>
+        <div class="menu">
+            <a href="vista1.html">Inicio</a>
+            <a href="carrito.html">🛒 Carrito</a>
+        </div>
+
+    </header>
+
+    <div class="titulo">
+        <h1>Catálogo de Maquillaje</h1>
+    </div>
+
+    <!-- BUSCADOR -->
+
+    <div class="buscador">
+
+        <input 
+        type="text"
+        id="busqueda"
+        placeholder="Buscar por nombre o categoría..."
+        onkeyup="buscarProducto()">
+
+    </div>
+
+    <!-- PRODUCTOS -->
+
+    <div class="contenedor">
+
+        <!-- LABIAL -->
+
+        <div class="card" data-categoria="labiales" data-nombre="labial ruby pink" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Labial Ruby Pink</h2>
+
+                <p class="categoria">Labiales</p>
+
+                <p>Color intenso y acabado brillante.</p>
+
+                <div class="precio">$199 MXN</div>
+
+                <div class="extra">
+
+                    <p>Labial hidratante de larga duración.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Labial Ruby Pink',
+                    199,
+                    'https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BASE -->
+
+        <div class="card" data-categoria="bases" data-nombre="base silk skin" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Base Silk Skin</h2>
+
+                <p class="categoria">Bases</p>
+
+                <p>Cobertura natural y ligera.</p>
+
+                <div class="precio">$320 MXN</div>
+
+                <div class="extra">
+
+                    <p>Base profesional de acabado natural.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Base Silk Skin',
+                    320,
+                    'https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MASCARA -->
+
+        <div class="card" data-categoria="mascaras" data-nombre="mascara volume max" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Mascara Volume Max</h2>
+
+                <p class="categoria">Mascaras</p>
+
+                <p>Pestañas largas y voluminosas.</p>
+
+                <div class="precio">$180 MXN</div>
+
+                <div class="extra">
+
+                    <p>Volumen extremo y resistente al agua.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Mascara Volume Max',
+                    180,
+                    'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SOMBRAS -->
+
+        <div class="card" data-categoria="sombras" data-nombre="paleta sunset" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Paleta Sunset</h2>
+
+                <p class="categoria">Sombras</p>
+
+                <p>Colores cálidos y brillantes.</p>
+
+                <div class="precio">$420 MXN</div>
+
+                <div class="extra">
+
+                    <p>Perfecta para maquillaje glamuroso.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Paleta Sunset',
+                    420,
+                    'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BROCHAS -->
+
+        <div class="card" data-categoria="brochas" data-nombre="set rose gold" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Set Rose Gold</h2>
+
+                <p class="categoria">Brochas</p>
+
+                <p>Brochas suaves y profesionales.</p>
+
+                <div class="precio">$550 MXN</div>
+
+                <div class="extra">
+
+                    <p>Kit premium para maquillaje completo.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Set Rose Gold',
+                    550,
+                    'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CREMA -->
+
+        <div class="card" data-categoria="cremas" data-nombre="crema soft skin" onclick="expandir(this)">
+            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80">
+
+            <div class="info">
+
+                <h2>Crema Soft Skin</h2>
+
+                <p class="categoria">Cremas</p>
+
+                <p>Hidratación profunda para tu piel.</p>
+
+                <div class="precio">$260 MXN</div>
+
+                <div class="extra">
+
+                    <p>Crema humectante con vitaminas.</p>
+
+                    <button class="boton-carrito"
+
+                    onclick="agregarCarrito(
+                    event,
+                    'Crema Soft Skin',
+                    260,
+                    'https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80'
+                    )">
+
+                    Agregar al carrito
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // EXPANDIR PRODUCTO
+
+        function expandir(card){
+
+            card.classList.toggle("active");
+
+        }
+
+        // AGREGAR AL CARRITO
+
+        function agregarCarrito(event,nombre,precio,imagen){
+
+            event.stopPropagation();
+
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+            carrito.push({
+
+                nombre:nombre,
+                precio:precio,
+                imagen:imagen,
+                cantidad:1
+
+            });
+
+            localStorage.setItem(
+                "carrito",
+                JSON.stringify(carrito)
+            );
+
+            alert(nombre + " agregado al carrito");
+
+        }
+
+        // BUSCADOR
+
+        function buscarProducto(){
+
+            let input = document
+            .getElementById("busqueda")
+            .value
+            .toLowerCase();
+
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+
+                let nombre = card.dataset.nombre.toLowerCase();
+
+                let categoria = card.dataset.categoria.toLowerCase();
+
+                if(
+                    nombre.includes(input) ||
+                    categoria.includes(input)
+                ){
+
+                    card.style.display = "block";
+
+                }else{
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauti Rose - Dirección de Entrega</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#fff5f7;
+        }
+
+        /* HEADER */
+
+        header{
+            width:100%;
+            background:#ffb6c1;
+            padding:20px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo{
+            font-size:35px;
+            color:white;
+            font-weight:bold;
+        }
+
+        .menu{
+            display:flex;
+            gap:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:white;
+            background:#d63384;
+            padding:12px 25px;
+            border-radius:25px;
+            transition:0.3s;
+        }
+
+        .menu a:hover{
+            background:#b0256b;
+        }
+
+        /* TITULO */
+
+        .titulo{
+            text-align:center;
+            margin:40px 0;
+        }
+
+        .titulo h1{
+            font-size:50px;
+            color:#d63384;
+        }
+
+        .titulo p{
+            color:#666;
+            margin-top:10px;
+            font-size:18px;
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor{
+            width:90%;
+            max-width:1200px;
+            margin:auto;
+            display:grid;
+            grid-template-columns:1fr 400px;
+            gap:30px;
+            padding-bottom:50px;
+        }
+
+        /* FORMULARIO */
+
+        .formulario{
+            background:white;
+            padding:35px;
+            border-radius:25px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .formulario h2{
+            color:#d63384;
+            margin-bottom:25px;
+            font-size:30px;
+        }
+
+        .grupo{
+            margin-bottom:25px;
+        }
+
+        .grupo label{
+            display:block;
+            margin-bottom:10px;
+            color:#444;
+            font-weight:bold;
+        }
+
+        .grupo input,
+        .grupo textarea,
+        .grupo select{
+            width:100%;
+            padding:15px;
+            border:2px solid #ffc0cb;
+            border-radius:15px;
+            outline:none;
+            font-size:17px;
+            transition:0.3s;
+        }
+
+        .grupo textarea{
+            resize:none;
+            height:120px;
+        }
+
+        .grupo input:focus,
+        .grupo textarea:focus,
+        .grupo select:focus{
+            border-color:#ff1493;
+        }
+
+        .fila{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+        }
+
+        /* RESUMEN */
+
+        .resumen{
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            height:fit-content;
+            position:sticky;
+            top:20px;
+        }
+
+        .resumen h2{
+            text-align:center;
+            color:#d63384;
+            margin-bottom:20px;
+        }
+
+        .productos{
+            max-height:300px;
+            overflow-y:auto;
+            margin-bottom:20px;
+        }
+
+        .item{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:15px;
+            padding-bottom:10px;
+            border-bottom:1px solid #eee;
+        }
+
+        .item span{
+            color:#555;
+        }
+
+        .total{
+            text-align:center;
+            font-size:30px;
+            color:#ff1493;
+            font-weight:bold;
+            margin:25px 0;
+        }
+
+        /* BOTON */
+
+        .btn-confirmar{
+            width:100%;
+            padding:18px;
+            border:none;
+            background:#ff1493;
+            color:white;
+            border-radius:30px;
+            font-size:20px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn-confirmar:hover{
+            background:#d63384;
+        }
+
+        /* MENSAJE */
+
+        .mensaje{
+            display:none;
+            margin-top:20px;
+            text-align:center;
+            color:green;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:900px){
+
+            .contenedor{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+        @media(max-width:600px){
+
+            header{
+                flex-direction:column;
+                gap:15px;
+                padding:20px;
+            }
+
+            .fila{
+                grid-template-columns:1fr;
+            }
+
+            .titulo h1{
+                font-size:38px;
+            }
+
+        }
+        /* LOGO */
+
+.logo-contenedor{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo-texto{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+    </style>
+
+</head>
+<body>
+
+    <header>
+
+        <div class="logo-contenedor">
+
+    <img src="imagenes/logo.png" alt="Logo Beauti Rose" class="logo-img">
+
+    <div class="logo-texto">Beauti Rose</div>
+
+</div>
+        <div class="menu">
+            <a href="vista2.html">Catálogo</a>
+            <a href="carrito.html">🛒 Carrito</a>
+        </div>
+
+    </header>
+
+    <div class="titulo">
+
+        <h1>📍 Dirección de Entrega</h1>
+
+        <p>Completa los datos para recibir tu pedido</p>
+
+    </div>
+
+    <div class="contenedor">
+
+        <!-- FORMULARIO -->
+
+        <div class="formulario">
+
+            <h2>Información de Entrega</h2>
+
+            <div class="fila">
+
+                <div class="grupo">
+
+                    <label>Nombre Completo</label>
+
+                    <input 
+                    type="text"
+                    id="nombre"
+                    placeholder="Ingresa tu nombre">
+
+                </div>
+
+                <div class="grupo">
+
+                    <label>Número Telefónico</label>
+
+                    <input 
+                    type="tel"
+                    id="telefono"
+                    placeholder="55 1234 5678">
+
+                </div>
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Correo Electrónico</label>
+
+                <input 
+                type="email"
+                id="correo"
+                placeholder="correo@ejemplo.com">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Calle y Número</label>
+
+                <input 
+                type="text"
+                id="calle"
+                placeholder="Ejemplo: Av. Reforma #123">
+
+            </div>
+
+            <div class="fila">
+
+                <div class="grupo">
+
+                    <label>Colonia</label>
+
+                    <input 
+                    type="text"
+                    id="colonia"
+                    placeholder="Nombre de la colonia">
+
+                </div>
+
+                <div class="grupo">
+
+                    <label>Código Postal</label>
+
+                    <input 
+                    type="text"
+                    id="cp"
+                    placeholder="00000">
+
+                </div>
+
+            </div>
+
+            <div class="fila">
+
+                <div class="grupo">
+
+                    <label>Ciudad</label>
+
+                    <input 
+                    type="text"
+                    id="ciudad"
+                    placeholder="Ciudad">
+
+                </div>
+
+                <div class="grupo">
+
+                    <label>Estado</label>
+
+                    <select id="estado">
+
+                        <option value="">Selecciona un estado</option>
+
+                        <option>Ciudad de México</option>
+                        <option>Estado de México</option>
+                        <option>Jalisco</option>
+                        <option>Nuevo León</option>
+                        <option>Puebla</option>
+                        <option>Querétaro</option>
+                        <option>Veracruz</option>
+                        <option>Yucatán</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Referencias del Domicilio</label>
+
+                <textarea
+                id="referencias"
+                placeholder="Ejemplo: Casa color rosa, portón negro, junto a la farmacia..."></textarea>
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Método de Entrega</label>
+
+                <select id="entrega">
+
+                    <option value="">Selecciona una opción</option>
+
+                    <option>Entrega a domicilio</option>
+
+                    <option>Recoger en tienda</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <!-- RESUMEN -->
+
+        <div class="resumen">
+
+            <h2>Resumen del Pedido</h2>
+
+            <div class="productos" id="productos"></div>
+
+            <div class="total">
+                Total: $<span id="total">0</span> MXN
+            </div>
+
+            <button class="btn-confirmar"
+            onclick="confirmarPedido()">
+
+                Confirmar Pedido
+
+            </button>
+
+            <div class="mensaje" id="mensaje">
+
+                ✅ Pedido confirmado correctamente.
+                Tu pedido va en camino 🚚
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        let productos = document.getElementById("productos");
+
+        let total = 0;
+
+        carrito.forEach(producto => {
+
+            let cantidad = producto.cantidad || 1;
+
+            let subtotal = producto.precio * cantidad;
+
+            total += subtotal;
+
+            productos.innerHTML += `
+
+                <div class="item">
+
+                    <span>
+                        ${producto.nombre} x${cantidad}
+                    </span>
+
+                    <span>
+                        $${subtotal}
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+        document.getElementById("total").innerHTML = total;
+
+        // CONFIRMAR PEDIDO
+
+        function confirmarPedido(){
+
+            let nombre =
+            document.getElementById("nombre").value;
+
+            let telefono =
+            document.getElementById("telefono").value;
+
+            let correo =
+            document.getElementById("correo").value;
+
+            let calle =
+            document.getElementById("calle").value;
+
+            let colonia =
+            document.getElementById("colonia").value;
+
+            let cp =
+            document.getElementById("cp").value;
+
+            let ciudad =
+            document.getElementById("ciudad").value;
+
+            let estado =
+            document.getElementById("estado").value;
+
+            let entrega =
+            document.getElementById("entrega").value;
+
+            if(
+                nombre === "" ||
+                telefono === "" ||
+                correo === "" ||
+                calle === "" ||
+                colonia === "" ||
+                cp === "" ||
+                ciudad === "" ||
+                estado === "" ||
+                entrega === ""
+            ){
+
+                alert("Completa todos los campos");
+
+                return;
+
+            }
+
+            document.getElementById("mensaje")
+            .style.display = "block";
+
+            localStorage.removeItem("carrito");
+
+            setTimeout(()=>{
+
+                window.location.href = "vista1.html";
+
+            },3000);
+
+        }
+
+    </script>
+
+</body>
+</html>

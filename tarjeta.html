@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauti Rose - Pago con Tarjeta</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:#fff5f7;
+        }
+
+        /* HEADER */
+
+        header{
+            width:100%;
+            background:#ffb6c1;
+            padding:20px 60px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            box-shadow:0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo{
+            font-size:35px;
+            font-weight:bold;
+            color:white;
+        }
+
+        .menu{
+            display:flex;
+            gap:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:white;
+            background:#d63384;
+            padding:12px 25px;
+            border-radius:25px;
+            transition:0.3s;
+        }
+
+        .menu a:hover{
+            background:#b0256b;
+        }
+
+        /* TITULO */
+
+        .titulo{
+            text-align:center;
+            margin:40px 0;
+        }
+
+        .titulo h1{
+            font-size:50px;
+            color:#d63384;
+        }
+
+        .titulo p{
+            color:#666;
+            margin-top:10px;
+            font-size:18px;
+        }
+
+        /* CONTENEDOR */
+
+        .contenedor{
+            width:90%;
+            max-width:1100px;
+            margin:auto;
+            display:grid;
+            grid-template-columns:1fr 400px;
+            gap:30px;
+            padding-bottom:50px;
+        }
+
+        /* FORMULARIO */
+
+        .formulario{
+            background:white;
+            padding:35px;
+            border-radius:25px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .formulario h2{
+            color:#d63384;
+            margin-bottom:25px;
+            font-size:30px;
+        }
+
+        .grupo{
+            margin-bottom:25px;
+        }
+
+        .grupo label{
+            display:block;
+            margin-bottom:10px;
+            color:#444;
+            font-weight:bold;
+        }
+
+        .grupo input{
+            width:100%;
+            padding:15px;
+            border:2px solid #ffc0cb;
+            border-radius:15px;
+            outline:none;
+            font-size:17px;
+            transition:0.3s;
+        }
+
+        .grupo input:focus{
+            border-color:#ff1493;
+        }
+
+        .fila{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+        }
+
+        /* TARJETA VISUAL */
+
+        .tarjeta-visual{
+            background:linear-gradient(135deg,#ff69b4,#d63384);
+            border-radius:25px;
+            padding:30px;
+            color:white;
+            height:250px;
+            position:relative;
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .chip{
+            width:70px;
+            height:50px;
+            background:gold;
+            border-radius:10px;
+            margin-bottom:30px;
+        }
+
+        .numero{
+            font-size:28px;
+            letter-spacing:3px;
+            margin-bottom:30px;
+        }
+
+        .datos{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .datos p{
+            font-size:16px;
+            opacity:0.9;
+        }
+
+        .marca{
+            position:absolute;
+            top:25px;
+            right:30px;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        /* RESUMEN */
+
+        .resumen{
+            background:white;
+            padding:30px;
+            border-radius:25px;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            height:fit-content;
+        }
+
+        .resumen h2{
+            color:#d63384;
+            margin-bottom:20px;
+            text-align:center;
+        }
+
+        .productos{
+            max-height:300px;
+            overflow-y:auto;
+            margin-bottom:20px;
+        }
+
+        .item{
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:15px;
+            padding-bottom:10px;
+            border-bottom:1px solid #eee;
+        }
+
+        .item span{
+            color:#555;
+        }
+
+        .total{
+            text-align:center;
+            font-size:30px;
+            color:#ff1493;
+            font-weight:bold;
+            margin:25px 0;
+        }
+
+        /* BOTON */
+
+        .btn-pagar{
+            width:100%;
+            padding:18px;
+            border:none;
+            background:#ff1493;
+            color:white;
+            border-radius:30px;
+            font-size:20px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .btn-pagar:hover{
+            background:#d63384;
+        }
+
+        /* MENSAJE */
+
+        .mensaje{
+            margin-top:20px;
+            text-align:center;
+            color:green;
+            font-weight:bold;
+            display:none;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:900px){
+
+            .contenedor{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+        @media(max-width:600px){
+
+            header{
+                flex-direction:column;
+                gap:15px;
+                padding:20px;
+            }
+
+            .fila{
+                grid-template-columns:1fr;
+            }
+
+            .numero{
+                font-size:22px;
+            }
+
+            .titulo h1{
+                font-size:38px;
+            }
+
+        }
+        /* LOGO */
+
+.logo-contenedor{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo-texto{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+    </style>
+
+</head>
+<body>
+
+    <header>
+
+        <div class="logo-contenedor">
+
+    <img src="imagenes/logo.png" alt="Logo Beauti Rose" class="logo-img">
+
+    <div class="logo-texto">Beauti Rose</div>
+
+</div>
+        <div class="menu">
+            <a href="vista2.html">Catálogo</a>
+            <a href="carrito.html">🛒 Carrito</a>
+        </div>
+
+    </header>
+
+    <div class="titulo">
+
+        <h1>💳 Pago con Tarjeta</h1>
+
+        <p>Completa los datos para finalizar tu compra</p>
+
+    </div>
+
+    <div class="contenedor">
+
+        <!-- FORMULARIO -->
+
+        <div class="formulario">
+
+            <h2>Información de Pago</h2>
+
+            <!-- TARJETA VISUAL -->
+
+            <div class="tarjeta-visual">
+
+                <div class="marca">VISA</div>
+
+                <div class="chip"></div>
+
+                <div class="numero" id="numeroVisual">
+                    #### #### #### ####
+                </div>
+
+                <div class="datos">
+
+                    <div>
+                        <p>Titular</p>
+                        <h3 id="nombreVisual">NOMBRE COMPLETO</h3>
+                    </div>
+
+                    <div>
+                        <p>Vence</p>
+                        <h3 id="fechaVisual">MM/AA</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br><br>
+
+            <!-- FORMULARIO -->
+
+            <div class="grupo">
+
+                <label>Nombre del Titular</label>
+
+                <input 
+                type="text"
+                id="nombre"
+                placeholder="Ejemplo: María López"
+                onkeyup="actualizarTarjeta()">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Número de Tarjeta</label>
+
+                <input 
+                type="text"
+                id="numero"
+                maxlength="19"
+                placeholder="1234 5678 9012 3456"
+                onkeyup="formatoTarjeta()">
+
+            </div>
+
+            <div class="fila">
+
+                <div class="grupo">
+
+                    <label>Fecha de Expiración</label>
+
+                    <input 
+                    type="text"
+                    id="fecha"
+                    maxlength="5"
+                    placeholder="MM/AA"
+                    onkeyup="actualizarTarjeta()">
+
+                </div>
+
+                <div class="grupo">
+
+                    <label>CVV</label>
+
+                    <input 
+                    type="password"
+                    id="cvv"
+                    maxlength="3"
+                    placeholder="123">
+
+                </div>
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Correo Electrónico</label>
+
+                <input 
+                type="email"
+                id="correo"
+                placeholder="correo@ejemplo.com">
+
+            </div>
+
+        </div>
+
+        <!-- RESUMEN -->
+
+        <div class="resumen">
+
+            <h2>Resumen de Compra</h2>
+
+            <div class="productos" id="productos"></div>
+
+            <div class="total">
+                Total: $<span id="total">0</span> MXN
+            </div>
+
+            <button class="btn-pagar"
+            onclick="pagar()">
+
+                Confirmar Pago
+
+            </button>
+
+            <div class="mensaje" id="mensaje">
+                ✅ Pago realizado correctamente
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        let productos = document.getElementById("productos");
+
+        let total = 0;
+
+        carrito.forEach(producto => {
+
+            let cantidad = producto.cantidad || 1;
+
+            let subtotal = producto.precio * cantidad;
+
+            total += subtotal;
+
+            productos.innerHTML += `
+
+                <div class="item">
+
+                    <span>
+                        ${producto.nombre} x${cantidad}
+                    </span>
+
+                    <span>
+                        $${subtotal}
+                    </span>
+
+                </div>
+
+            `;
+
+        });
+
+        document.getElementById("total").innerHTML = total;
+
+        // ACTUALIZAR TARJETA VISUAL
+
+        function actualizarTarjeta(){
+
+            let nombre =
+            document.getElementById("nombre").value;
+
+            let fecha =
+            document.getElementById("fecha").value;
+
+            document.getElementById("nombreVisual")
+            .innerHTML =
+            nombre || "NOMBRE COMPLETO";
+
+            document.getElementById("fechaVisual")
+            .innerHTML =
+            fecha || "MM/AA";
+
+        }
+
+        // FORMATO TARJETA
+
+        function formatoTarjeta(){
+
+            let input =
+            document.getElementById("numero");
+
+            let valor =
+            input.value.replace(/\s/g,'');
+
+            valor = valor.replace(/(.{4})/g,'$1 ');
+
+            input.value = valor.trim();
+
+            document.getElementById("numeroVisual")
+            .innerHTML =
+            input.value || "#### #### #### ####";
+
+        }
+
+        // PAGAR
+
+        function pagar(){
+
+            let nombre =
+            document.getElementById("nombre").value;
+
+            let numero =
+            document.getElementById("numero").value;
+
+            let fecha =
+            document.getElementById("fecha").value;
+
+            let cvv =
+            document.getElementById("cvv").value;
+
+            let correo =
+            document.getElementById("correo").value;
+
+            if(
+                nombre === "" ||
+                numero === "" ||
+                fecha === "" ||
+                cvv === "" ||
+                correo === ""
+            ){
+
+                alert("Completa todos los campos");
+
+                return;
+
+            }
+
+            document.getElementById("mensaje")
+            .style.display = "block";
+
+            localStorage.removeItem("carrito");
+
+            setTimeout(()=>{
+
+                window.location.href = "direccion.html";
+
+            },3000);
+
+        }
+
+    </script>
+
+</body>
+</html>
